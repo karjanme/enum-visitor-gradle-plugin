@@ -1,10 +1,28 @@
 plugins {
     id 'java'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
     id 'com.diffplug.spotless' version '7.0.2'
 }
 
+group = 'me.karjan'
+version = '0.0.1-SNAPSHOT'
+
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    testImplementation libs.junit
+}
+
+gradlePlugin {
+    plugins {
+        visitorGenerator {
+            id = 'me.karjan.enumvisitor'
+            implementationClass = 'me.karjan.enumvisitor.PluginImpl'
+        }
+    }
 }
 
 spotless {

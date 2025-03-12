@@ -1,10 +1,33 @@
 plugins {
     id 'java'
+    id 'java-gradle-plugin'
     id 'com.diffplug.spotless' version '7.0.2'
+    id 'com.gradle.plugin-publish' version '1.3.1'
 }
+
+group = 'me.karjan'
+version = '0.0.1'
 
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    testImplementation libs.junit
+}
+
+gradlePlugin {
+    website = 'https://github.com/karjanme/enum-visitor-gradle-plugin'
+    vcsUrl = 'https://github.com/karjanme/enum-visitor-gradle-plugin.git'
+    plugins {
+        enumVisitor {
+            id = 'me.karjan.enumvisitor'
+            displayName = 'Enum Visitor'
+            description = 'Automatic generation of enums with a visitor interface' 
+            tags.set(['java', 'enum', 'visitor', 'code-generation']) 
+            implementationClass = 'me.karjan.enumvisitor.EnumVisitorPlugin'
+        }
+    }
 }
 
 spotless {

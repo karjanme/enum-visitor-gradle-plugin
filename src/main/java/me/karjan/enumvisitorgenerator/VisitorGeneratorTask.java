@@ -38,6 +38,8 @@ public class VisitorGeneratorTask extends DefaultTask {
   @InputDirectory
   @Optional
   File source = getProject().file(DEFAULT_SOURCE_DIRECTORY);
+  // TODO: Task.getProject() is deprecated
+  // https://docs.gradle.org/8.13/userguide/upgrading_version_7.html#task_project
 
   @OutputDirectory
   @Optional

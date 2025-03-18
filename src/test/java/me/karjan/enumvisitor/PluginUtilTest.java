@@ -1,13 +1,11 @@
-package me.karjan.enumvisitorgenerator;
+package me.karjan.enumvisitor;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * TODO: javadoc
- */
+/** TODO: javadoc */
 public class PluginUtilTest {
-    
+
   @Test
   public void test_isEmpty_withNull() {
     Assert.assertTrue(PluginUtil.isEmpty(null));
@@ -32,5 +30,4 @@ public class PluginUtilTest {
   public void test_isEmpty_withNonBlankStringSurroundedByWhitespace() {
     Assert.assertFalse(PluginUtil.isEmpty("  test  "));
   }
-
 }

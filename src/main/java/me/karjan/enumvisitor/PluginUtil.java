@@ -1,13 +1,11 @@
-package me.karjan.enumvisitorgenerator;
+package me.karjan.enumvisitor;
 
 import java.nio.file.FileSystems;
 
-/**
- * TODO: javadoc
- */
+/** TODO: javadoc */
 class PluginUtil {
 
-  static final String DEFAULT_SOURCE_DIRECTORY = "src/main/visgen";
+  static final String DEFAULT_SOURCE_DIRECTORY = "src/main/enumvis";
   static final String VISITOR_FILE_EXT = ".v";
   static final String JAVA_FILE_EXT = ".java";
 
@@ -18,11 +16,8 @@ class PluginUtil {
 
   static final String JAVA_IDENTIFIER_REGEX = "^([a-zA-Z_$][a-zA-Z\\d_$]*)$";
 
-  /**
-   * TODO: javadoc
-   */
+  /** TODO: javadoc */
   static boolean isEmpty(String s) {
     return (s == null || s.isBlank());
   }
-
 }

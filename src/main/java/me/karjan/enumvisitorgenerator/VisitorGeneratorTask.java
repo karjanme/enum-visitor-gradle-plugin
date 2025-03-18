@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 
+import javax.inject.Inject;
+
 import org.gradle.api.DefaultTask;
-import org.gradle.api.file.ConfigurableFileTree;
+import org.gradle.api.file.ProjectLayout;
 import org.gradle.api.tasks.InputDirectory;
 import org.gradle.api.tasks.Optional;
 import org.gradle.api.tasks.OutputDirectory;
@@ -35,35 +37,44 @@ import static me.karjan.enumvisitorgenerator.PluginUtil.VISITOR_FILE_EXT;
  */
 public class VisitorGeneratorTask extends DefaultTask {
 
+  ProjectLayout projectLayout;
+
   @InputDirectory
   @Optional
   File source = getProject().file(DEFAULT_SOURCE_DIRECTORY);
-  // TODO: Task.getProject() is deprecated
-  // https://docs.gradle.org/8.13/userguide/upgrading_version_7.html#task_project
 
   @OutputDirectory
   @Optional
   File destination = getProject().getLayout().getBuildDirectory().file("generated-src/visgen").get().getAsFile();
 
+  @Inject
+  public VisitorGeneratorTask(ProjectLayout projectLayout) {
+    this.projectLayout = projectLayout;
+  }
+
   /**
    * TODO: javadoc
    */
   @TaskAction
-  void generatorVisitorClass() throws IOException {
-    ConfigurableFileTree fileTree = getProject().fileTree(source);
-    fileTree.include("**/*" + VISITOR_FILE_EXT);
-    fileTree.forEach(file -> {
-      try {
-        String[] enumLocationSegments = determineEnumLocationSegments(file);
-        String fileName = file.getName();
-        String enumName = fileName.substring(0, fileName.lastIndexOf('.'));
-        List<String> enumMembers = readFileLinesToSet(file);
-        generateEnumVisitorSourceCode(enumLocationSegments, enumName, enumMembers);
-      } catch (IOException e) {
-        // ignore
-      }
-      getLogger().info(file.getName());
-    });
+  void generatorVisitorClass() {
+    projectLayout.getProjectDirectory()
+        .dir(DEFAULT_SOURCE_DIRECTORY)
+        .getAsFileTree()
+        .visit(visitor -> {
+          File file = visitor.getFile();
+          if (file.getName().endsWith(VISITOR_FILE_EXT)) {
+            try {
+              String[] enumLocationSegments = determineEnumLocationSegments(file);
+              String fileName = file.getName();
+              String enumName = fileName.substring(0, fileName.lastIndexOf('.'));
+              List<String> enumMembers = readFileLinesToSet(file);
+              generateEnumVisitorSourceCode(enumLocationSegments, enumName, enumMembers);
+            } catch (IOException e) {
+              // ignore
+            }
+            getLogger().info(file.getName());
+          }
+        });
   }
 
   private String[] determineEnumLocationSegments(File file) {

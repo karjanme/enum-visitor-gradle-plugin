@@ -1,3 +1,14 @@
 plugins {
     id 'java'
+    id 'com.diffplug.spotless' version '7.0.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+spotless {
+    java {
+        googleJavaFormat('1.10.0')
+    }
 }

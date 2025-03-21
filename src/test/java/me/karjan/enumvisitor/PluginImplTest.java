@@ -20,7 +20,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-/** TODO: javadoc */
+/** Automated functional tests for {@link PluginImpl}. */
 public class PluginImplTest {
 
   @Rule public TemporaryFolder tempProjectDir = new TemporaryFolder();
@@ -50,7 +50,7 @@ public class PluginImplTest {
             .withPluginClasspath()
             .build();
 
-    BuildTask task = result.task(":" + PluginImpl.VISITOR_GENERATOR_TASK_NAME);
+    BuildTask task = result.task(":" + PluginImpl.ENUM_VISITOR_TASK_NAME);
     Assert.assertEquals(TaskOutcome.SUCCESS, task.getOutcome());
   }
 
@@ -63,11 +63,11 @@ public class PluginImplTest {
     BuildResult result =
         GradleRunner.create()
             .withProjectDir(tempProjectDir.getRoot())
-            .withArguments(PluginImpl.VISITOR_GENERATOR_TASK_NAME)
+            .withArguments(PluginImpl.ENUM_VISITOR_TASK_NAME)
             .withPluginClasspath()
             .build();
 
-    BuildTask task = result.task(":" + PluginImpl.VISITOR_GENERATOR_TASK_NAME);
+    BuildTask task = result.task(":" + PluginImpl.ENUM_VISITOR_TASK_NAME);
     Assert.assertEquals(TaskOutcome.SUCCESS, task.getOutcome());
 
     File expectedGenFile =
@@ -83,7 +83,7 @@ public class PluginImplTest {
     BuildResult result =
         GradleRunner.create()
             .withProjectDir(tempProjectDir.getRoot())
-            .withArguments(PluginImpl.VISITOR_GENERATOR_TASK_NAME)
+            .withArguments(PluginImpl.ENUM_VISITOR_TASK_NAME)
             .withPluginClasspath()
             .buildAndFail();
 
@@ -101,7 +101,7 @@ public class PluginImplTest {
     BuildResult result =
         GradleRunner.create()
             .withProjectDir(tempProjectDir.getRoot())
-            .withArguments(PluginImpl.VISITOR_GENERATOR_TASK_NAME)
+            .withArguments(PluginImpl.ENUM_VISITOR_TASK_NAME)
             .withPluginClasspath()
             .buildAndFail();
 
@@ -119,7 +119,7 @@ public class PluginImplTest {
     BuildResult result =
         GradleRunner.create()
             .withProjectDir(tempProjectDir.getRoot())
-            .withArguments(PluginImpl.VISITOR_GENERATOR_TASK_NAME)
+            .withArguments(PluginImpl.ENUM_VISITOR_TASK_NAME)
             .withPluginClasspath()
             .buildAndFail();
 
@@ -137,7 +137,7 @@ public class PluginImplTest {
     BuildResult result =
         GradleRunner.create()
             .withProjectDir(tempProjectDir.getRoot())
-            .withArguments(PluginImpl.VISITOR_GENERATOR_TASK_NAME)
+            .withArguments(PluginImpl.ENUM_VISITOR_TASK_NAME)
             .withPluginClasspath()
             .buildAndFail();
 
@@ -158,7 +158,7 @@ public class PluginImplTest {
     BuildResult result =
         GradleRunner.create()
             .withProjectDir(tempProjectDir.getRoot())
-            .withArguments(PluginImpl.VISITOR_GENERATOR_TASK_NAME)
+            .withArguments(PluginImpl.ENUM_VISITOR_TASK_NAME)
             .withPluginClasspath()
             .buildAndFail();
 
@@ -182,7 +182,7 @@ public class PluginImplTest {
     BuildResult result =
         GradleRunner.create()
             .withProjectDir(tempProjectDir.getRoot())
-            .withArguments(PluginImpl.VISITOR_GENERATOR_TASK_NAME)
+            .withArguments(PluginImpl.ENUM_VISITOR_TASK_NAME)
             .withPluginClasspath()
             .buildAndFail();
 
@@ -221,7 +221,7 @@ public class PluginImplTest {
             .forwardOutput()
             .build();
 
-    BuildTask task = result.task(":" + PluginImpl.VISITOR_GENERATOR_TASK_NAME);
+    BuildTask task = result.task(":" + PluginImpl.ENUM_VISITOR_TASK_NAME);
     Assert.assertEquals(TaskOutcome.SUCCESS, task.getOutcome());
 
     File expectedGenFile =

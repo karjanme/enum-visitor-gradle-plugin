@@ -8,10 +8,11 @@ import org.gradle.api.tasks.SourceSet;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.gradle.api.tasks.TaskContainer;
 
-/** TODO: javadoc */
-class PluginImpl implements Plugin<Project> {
+/** Specific implementation of a Gradle Plugin for the Enum Visitor generator. */
+final class PluginImpl implements Plugin<Project> {
 
-  static final String VISITOR_GENERATOR_TASK_NAME = "generateEnumVisitors";
+  /** The name of the Enum Visitor generation task. */
+  static final String ENUM_VISITOR_TASK_NAME = "generateEnumVisitors";
 
   @Override
   public void apply(final Project target) {
@@ -21,7 +22,7 @@ class PluginImpl implements Plugin<Project> {
     TaskContainer tasks = target.getTasks();
 
     GenerateEnumVisitorsTask ourPluginTask =
-        tasks.register(VISITOR_GENERATOR_TASK_NAME, GenerateEnumVisitorsTask.class).get();
+        tasks.register(ENUM_VISITOR_TASK_NAME, GenerateEnumVisitorsTask.class).get();
 
     ExtensionContainer extensions = target.getExtensions();
     SourceSetContainer sourceSets = extensions.getByType(SourceSetContainer.class);

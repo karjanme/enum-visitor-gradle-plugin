@@ -31,13 +31,18 @@ import org.gradle.api.tasks.OutputDirectory;
 import org.gradle.api.tasks.TaskAction;
 import org.gradle.api.tasks.TaskExecutionException;
 
-/** TODO: javadoc */
+/**
+ * A gradle Task which performs the work to generate the Java source files for an enum including the
+ * visitor pattern for it.
+ */
 class GenerateEnumVisitorsTask extends DefaultTask {
 
   ProjectLayout projectLayout;
 
+  /** The location of the source definition files. */
   @InputDirectory @Optional File source = getProject().file(DEFAULT_SOURCE_DIRECTORY);
 
+  /** The location of the generated Java files. */
   @OutputDirectory @Optional
   File destination =
       getProject().getLayout().getBuildDirectory().file("generated-src/enumvis").get().getAsFile();
@@ -47,9 +52,12 @@ class GenerateEnumVisitorsTask extends DefaultTask {
     this.projectLayout = projectLayout;
   }
 
-  /** TODO: javadoc */
+  /**
+   * Generate all enum with visitor pattern Java source code files for definitions in the source
+   * directory.
+   */
   @TaskAction
-  void generatorVisitorClass() {
+  void generatorEnumVisitors() {
     projectLayout
         .getProjectDirectory()
         .dir(DEFAULT_SOURCE_DIRECTORY)
@@ -184,12 +192,12 @@ class GenerateEnumVisitorsTask extends DefaultTask {
     throw new TaskExecutionException(this, new Throwable(causeMsg));
   }
 
-  /** TODO: javadoc */
+  /** Getter for {@link #source}. */
   File getSource() {
     return source;
   }
 
-  /** TODO: javadoc */
+  /** Getter for {@link #destination}. */
   File getDestination() {
     return destination;
   }

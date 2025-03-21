@@ -3,7 +3,7 @@ package me.karjan.enumvisitor;
 import org.junit.Assert;
 import org.junit.Test;
 
-/** TODO: javadoc */
+/** Automated unit tests for {@link PluginUtil}. */
 public class PluginUtilTest {
 
   @Test
@@ -24,6 +24,11 @@ public class PluginUtilTest {
   @Test
   public void test_isEmpty_withNonBlankString() {
     Assert.assertFalse(PluginUtil.isEmpty("test"));
+  }
+
+  @Test
+  public void test_isEmpty_withWhitespace() {
+    Assert.assertTrue(PluginUtil.isEmpty("\t"));
   }
 
   @Test

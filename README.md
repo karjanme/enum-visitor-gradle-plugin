@@ -1,10 +1,14 @@
 [license-image]: https://img.shields.io/github/license/karjanme/enum-visitor-gradle-plugin?label=License
 [license-url]: https://github.com/karjanme/enum-visitor-gradle-plugin/blob/main/LICENSE
 
+[gradle-plugin-portal-image]: https://img.shields.io/gradle-plugin-portal/v/me.karjan.enumvisitor?label=Gradle%20Plugin%20Portal
+[gradle-plugin-portal-url]: https://plugins.gradle.org/plugin/me.karjan.enumvisitor
+
 [ci-pipeline-image]: https://github.com/karjanme/enum-visitor-gradle-plugin/actions/workflows/ci.yml/badge.svg?branch=main
 [ci-pipeline-url]: https://github.com/karjanme/enum-visitor-gradle-plugin/actions/workflows/ci.yml
 
 [![license-image]][license-url]
+[![gradle-plugin-portal-image]][gradle-plugin-portal-url]
 [![ci-pipeline-image]][ci-pipeline-url]
 
 

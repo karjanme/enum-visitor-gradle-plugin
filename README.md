@@ -18,7 +18,7 @@ A Gradle plugin that automatically generates enums with an interface that implem
 Add the following to your `build.gradle` file:
 ```
 plugins {
-    id 'me.karjan.enumvisitor' version '0.0.1'
+    id 'me.karjan.enumvisitor' version '0.1.0'
 }
 ```
 

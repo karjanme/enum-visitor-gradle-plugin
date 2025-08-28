@@ -260,10 +260,6 @@ public class EnumVisitorPluginTest {
     String fileContents = fileLines.collect(Collectors.joining(LINE_SEPARATOR));
     fileLines.close();
 
-    // TEMP
-    System.out.println("========================================");
-    System.out.println(fileContents);
-
     String expectedPackage = "package ";
     Assert.assertTrue(
         "The file contents must contain '" + expectedPackage + "'",

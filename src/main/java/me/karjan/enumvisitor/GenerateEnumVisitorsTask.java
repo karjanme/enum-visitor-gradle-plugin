@@ -155,7 +155,7 @@ class GenerateEnumVisitorsTask extends DefaultTask {
         .append(LINE_SEPARATOR)
         .append(LINE_SEPARATOR);
 
-    fileContents.append("enum " + enumName + " {").append(LINE_SEPARATOR);
+    fileContents.append("public enum " + enumName + " {").append(LINE_SEPARATOR);
 
     StringJoiner memberDefs =
         new StringJoiner(

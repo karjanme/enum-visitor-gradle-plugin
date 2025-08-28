@@ -51,7 +51,7 @@ File: `build/generated-src/enumvis/pkgA/pkg1/Planet.java`
 ```
 package pkgA.pkg1;
 
-enum Planet {
+public enum Planet {
   Mercury {
     public <E> E accept(PlanetVisitor<E> visitor) {
       return visitor.visitMercury();

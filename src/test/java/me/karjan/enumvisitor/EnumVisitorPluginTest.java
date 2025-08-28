@@ -269,7 +269,7 @@ public class EnumVisitorPluginTest {
         "The file contents must contain '" + expectedPackage + "'",
         fileContents.contains(expectedPackage));
 
-    String expectedEnum = "enum " + enumName;
+    String expectedEnum = "public enum " + enumName;
     Assert.assertTrue(
         "The file contents must contain '" + expectedEnum + "'",
         fileContents.contains(expectedEnum));
